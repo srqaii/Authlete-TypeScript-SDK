@@ -55,7 +55,7 @@ import {
   AuthorizationUpdateResponse,
 } from './authorization/authorization';
 import * as ExtensionAPI from './extension/extension';
-import { Extension as ExtensionAPIExtension } from './extension/extension';
+import { Extension } from './extension/extension';
 import { APIPromise } from '../../core/api-promise';
 import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
@@ -158,6 +158,82 @@ export class Client extends APIResource {
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
   }
+}
+
+export interface ClientExtension {
+  /**
+   * The value of the duration of access tokens per client in seconds. In normal
+   * cases, the value of the service's `accessTokenDuration` property is used as the
+   * duration of access tokens issued by the service. However, if this
+   * `accessTokenDuration` property holds a non-zero positive number and its value is
+   * less than the duration configured by the service, the value is used as the
+   * duration of access tokens issued to the client application.
+   *
+   * Note that the duration of access tokens can be controlled by the scope attribute
+   * `access_token.duration`, too. Authlete chooses the minimum value among the
+   * candidates.
+   */
+  accessTokenDuration?: number;
+
+  /**
+   * The value of the duration of ID tokens per client in seconds. In normal cases,
+   * the value of the service's `idTokenDuration` property is used as the duration of
+   * ID tokens issued by the service. However, if this `idTokenDuration` property
+   * holds a non-zero positive number and its value is less than the duration
+   * configured by the service, the value is used as the duration of ID tokens issued
+   * to the client application.
+   *
+   * Note that the duration of refresh tokens can be controlled by the scope
+   * attribute `id_token.duration`, too. Authlete chooses the minimum value among the
+   * candidates.
+   */
+  idTokenDuration?: number;
+
+  /**
+   * The value of the duration of refresh tokens per client in seconds. In normal
+   * cases, the value of the service's `refreshTokenDuration` property is used as the
+   * duration of refresh tokens issued by the service. However, if this
+   * `refreshTokenDuration` property holds a non-zero positive number and its value
+   * is less than the duration configured by the service, the value is used as the
+   * duration of refresh tokens issued to the client application.
+   *
+   * Note that the duration of refresh tokens can be controlled by the scope
+   * attribute `refresh_token.duration`, too. Authlete chooses the minimum value
+   * among the candidates.
+   */
+  refreshTokenDuration?: number;
+
+  /**
+   * The set of scopes that the client application is allowed to request. This
+   * paramter will be one of the following.
+   *
+   * - `null`
+   * - an empty set
+   * - a set with at least one element
+   *
+   * When the value of this parameter is `null`, it means that the set of scopes that
+   * the client application is allowed to request is the set of the scopes that the
+   * service supports. When the value of this parameter is an empty set, it means
+   * that the client application is not allowed to request any scopes. When the value
+   * of this parameter is a set with at least one element, it means that the set is
+   * the set of scopes that the client application is allowed to request.
+   */
+  requestableScopes?: Array<string>;
+
+  /**
+   * The flag to indicate whether "Requestable Scopes per Client" is enabled or not.
+   * If `true`, you can define the set of scopes which this client application can
+   * request. If `false`, this client application can request any scope which is
+   * supported by the authorization server.
+   */
+  requestableScopesEnabled?: boolean;
+
+  /**
+   * Get the flag indicating whether the client is explicitly given a permission to
+   * make token exchange requests ([RFC
+   * 8693][https://www.rfc-editor.org/rfc/rfc8693.html])
+   */
+  tokenExchangePermitted?: boolean;
 }
 
 export interface ClientCreateParams {
@@ -464,7 +540,7 @@ export interface ClientCreateParams {
    */
   explicitlyRegistered?: boolean;
 
-  extension?: ClientCreateParams.Extension;
+  extension?: ClientExtension;
 
   /**
    * The FAPI modes for this client.
@@ -1132,84 +1208,6 @@ export interface ClientCreateParams {
   userInfoSignAlg?: GetAPI.JwsAlg;
 }
 
-export namespace ClientCreateParams {
-  export interface Extension {
-    /**
-     * The value of the duration of access tokens per client in seconds. In normal
-     * cases, the value of the service's `accessTokenDuration` property is used as the
-     * duration of access tokens issued by the service. However, if this
-     * `accessTokenDuration` property holds a non-zero positive number and its value is
-     * less than the duration configured by the service, the value is used as the
-     * duration of access tokens issued to the client application.
-     *
-     * Note that the duration of access tokens can be controlled by the scope attribute
-     * `access_token.duration`, too. Authlete chooses the minimum value among the
-     * candidates.
-     */
-    accessTokenDuration?: number;
-
-    /**
-     * The value of the duration of ID tokens per client in seconds. In normal cases,
-     * the value of the service's `idTokenDuration` property is used as the duration of
-     * ID tokens issued by the service. However, if this `idTokenDuration` property
-     * holds a non-zero positive number and its value is less than the duration
-     * configured by the service, the value is used as the duration of ID tokens issued
-     * to the client application.
-     *
-     * Note that the duration of refresh tokens can be controlled by the scope
-     * attribute `id_token.duration`, too. Authlete chooses the minimum value among the
-     * candidates.
-     */
-    idTokenDuration?: number;
-
-    /**
-     * The value of the duration of refresh tokens per client in seconds. In normal
-     * cases, the value of the service's `refreshTokenDuration` property is used as the
-     * duration of refresh tokens issued by the service. However, if this
-     * `refreshTokenDuration` property holds a non-zero positive number and its value
-     * is less than the duration configured by the service, the value is used as the
-     * duration of refresh tokens issued to the client application.
-     *
-     * Note that the duration of refresh tokens can be controlled by the scope
-     * attribute `refresh_token.duration`, too. Authlete chooses the minimum value
-     * among the candidates.
-     */
-    refreshTokenDuration?: number;
-
-    /**
-     * The set of scopes that the client application is allowed to request. This
-     * paramter will be one of the following.
-     *
-     * - `null`
-     * - an empty set
-     * - a set with at least one element
-     *
-     * When the value of this parameter is `null`, it means that the set of scopes that
-     * the client application is allowed to request is the set of the scopes that the
-     * service supports. When the value of this parameter is an empty set, it means
-     * that the client application is not allowed to request any scopes. When the value
-     * of this parameter is a set with at least one element, it means that the set is
-     * the set of scopes that the client application is allowed to request.
-     */
-    requestableScopes?: Array<string>;
-
-    /**
-     * The flag to indicate whether "Requestable Scopes per Client" is enabled or not.
-     * If `true`, you can define the set of scopes which this client application can
-     * request. If `false`, this client application can request any scope which is
-     * supported by the authorization server.
-     */
-    requestableScopesEnabled?: boolean;
-
-    /**
-     * Get the flag indicating whether the client is explicitly given a permission to
-     * make token exchange requests ([RFC
-     * 8693][https://www.rfc-editor.org/rfc/rfc8693.html])
-     */
-    tokenExchangePermitted?: boolean;
-  }
-}
-
 export interface ClientUpdateParams {
   /**
    * Path param: A service ID.
@@ -1529,7 +1527,7 @@ export interface ClientUpdateParams {
   /**
    * Body param:
    */
-  extension?: ClientUpdateParams.Extension;
+  extension?: ClientExtension;
 
   /**
    * Body param: The FAPI modes for this client.
@@ -2205,84 +2203,6 @@ export interface ClientUpdateParams {
   userInfoSignAlg?: GetAPI.JwsAlg;
 }
 
-export namespace ClientUpdateParams {
-  export interface Extension {
-    /**
-     * The value of the duration of access tokens per client in seconds. In normal
-     * cases, the value of the service's `accessTokenDuration` property is used as the
-     * duration of access tokens issued by the service. However, if this
-     * `accessTokenDuration` property holds a non-zero positive number and its value is
-     * less than the duration configured by the service, the value is used as the
-     * duration of access tokens issued to the client application.
-     *
-     * Note that the duration of access tokens can be controlled by the scope attribute
-     * `access_token.duration`, too. Authlete chooses the minimum value among the
-     * candidates.
-     */
-    accessTokenDuration?: number;
-
-    /**
-     * The value of the duration of ID tokens per client in seconds. In normal cases,
-     * the value of the service's `idTokenDuration` property is used as the duration of
-     * ID tokens issued by the service. However, if this `idTokenDuration` property
-     * holds a non-zero positive number and its value is less than the duration
-     * configured by the service, the value is used as the duration of ID tokens issued
-     * to the client application.
-     *
-     * Note that the duration of refresh tokens can be controlled by the scope
-     * attribute `id_token.duration`, too. Authlete chooses the minimum value among the
-     * candidates.
-     */
-    idTokenDuration?: number;
-
-    /**
-     * The value of the duration of refresh tokens per client in seconds. In normal
-     * cases, the value of the service's `refreshTokenDuration` property is used as the
-     * duration of refresh tokens issued by the service. However, if this
-     * `refreshTokenDuration` property holds a non-zero positive number and its value
-     * is less than the duration configured by the service, the value is used as the
-     * duration of refresh tokens issued to the client application.
-     *
-     * Note that the duration of refresh tokens can be controlled by the scope
-     * attribute `refresh_token.duration`, too. Authlete chooses the minimum value
-     * among the candidates.
-     */
-    refreshTokenDuration?: number;
-
-    /**
-     * The set of scopes that the client application is allowed to request. This
-     * paramter will be one of the following.
-     *
-     * - `null`
-     * - an empty set
-     * - a set with at least one element
-     *
-     * When the value of this parameter is `null`, it means that the set of scopes that
-     * the client application is allowed to request is the set of the scopes that the
-     * service supports. When the value of this parameter is an empty set, it means
-     * that the client application is not allowed to request any scopes. When the value
-     * of this parameter is a set with at least one element, it means that the set is
-     * the set of scopes that the client application is allowed to request.
-     */
-    requestableScopes?: Array<string>;
-
-    /**
-     * The flag to indicate whether "Requestable Scopes per Client" is enabled or not.
-     * If `true`, you can define the set of scopes which this client application can
-     * request. If `false`, this client application can request any scope which is
-     * supported by the authorization server.
-     */
-    requestableScopesEnabled?: boolean;
-
-    /**
-     * Get the flag indicating whether the client is explicitly given a permission to
-     * make token exchange requests ([RFC
-     * 8693][https://www.rfc-editor.org/rfc/rfc8693.html])
-     */
-    tokenExchangePermitted?: boolean;
-  }
-}
-
 export interface ClientDeleteParams {
   /**
    * A service ID.
@@ -2296,10 +2216,11 @@ Client.Secret = Secret;
 Client.Authorization = Authorization;
 Client.GrantedScopes = GrantedScopes;
 Client.Registration = Registration;
-Client.Extension = ExtensionAPIExtension;
+Client.Extension = Extension;
 
 export declare namespace Client {
   export {
+    type ClientExtension as ClientExtension,
     type ClientCreateParams as ClientCreateParams,
     type ClientUpdateParams as ClientUpdateParams,
     type ClientDeleteParams as ClientDeleteParams,
@@ -2358,5 +2279,5 @@ export declare namespace Client {
     type RegistrationDeleteParams as RegistrationDeleteParams,
   };
 
-  export { ExtensionAPIExtension as Extension };
+  export { Extension as Extension };
 }

@@ -7,7 +7,13 @@ export {
   type AuthorizationUpdateParams,
   type AuthorizationDeleteParams,
 } from './authorization/index';
-export { Client, type ClientCreateParams, type ClientUpdateParams, type ClientDeleteParams } from './client';
+export {
+  Client,
+  type ClientExtension,
+  type ClientCreateParams,
+  type ClientUpdateParams,
+  type ClientDeleteParams,
+} from './client';
 export { Extension } from './extension/index';
 export {
   Get,

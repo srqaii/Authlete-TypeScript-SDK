@@ -4,6 +4,7 @@ export { Auth, type AuthRevokeResponse, type AuthRevokeParams } from './auth/aut
 export { Backchannel } from './backchannel/backchannel';
 export {
   Client,
+  type ClientExtension,
   type ClientCreateParams,
   type ClientUpdateParams,
   type ClientDeleteParams,
@@ -46,7 +47,12 @@ export {
   type PushedAuthReqCreateResponse,
   type PushedAuthReqCreateParams,
 } from './pushed-auth-req';
-export { Service, type ServiceCreateServiceParams, type ServiceUpdateServiceParams } from './service/service';
+export {
+  Service,
+  type CredentialIssuerMetadata,
+  type ServiceCreateServiceParams,
+  type ServiceUpdateServiceParams,
+} from './service/service';
 export {
   Vci,
   type VciCreateJwksResponse,

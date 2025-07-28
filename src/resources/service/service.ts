@@ -144,6 +144,39 @@ export class Service extends APIResource {
   }
 }
 
+export interface CredentialIssuerMetadata {
+  /**
+   * The identifier of the authorization server that the credential issuer relies on
+   * for authorization.
+   */
+  authorizationServer?: string;
+
+  /**
+   * The URL of the batch credential endpoint of the credential issuer.
+   */
+  batchCredentialEndpoint?: number;
+
+  /**
+   * The URL of the credential endpoint of the credential issuer.
+   */
+  credentialEndpoint?: boolean;
+
+  /**
+   * The identifier of a credential request.
+   */
+  credentialIssuer?: string;
+
+  /**
+   * A JSON array describing supported credentials.
+   */
+  credentialsSupported?: boolean;
+
+  /**
+   * The URL of the deferred credential endpoint of the credential issuer.
+   */
+  deferredCredentialEndpoint?: string;
+}
+
 export interface ServiceCreateServiceParams {
   /**
    * The duration of access tokens in seconds. This value is used as the value of
@@ -369,7 +402,7 @@ export interface ServiceCreateServiceParams {
    */
   credentialDuration?: number;
 
-  credentialIssuerMetadata?: ServiceCreateServiceParams.CredentialIssuerMetadata;
+  credentialIssuerMetadata?: CredentialIssuerMetadata;
 
   /**
    * The JWK Set document containing private keys that are used to sign verifiable
@@ -1774,39 +1807,6 @@ export interface ServiceCreateServiceParams {
 }
 
 export namespace ServiceCreateServiceParams {
-  export interface CredentialIssuerMetadata {
-    /**
-     * The identifier of the authorization server that the credential issuer relies on
-     * for authorization.
-     */
-    authorizationServer?: string;
-
-    /**
-     * The URL of the batch credential endpoint of the credential issuer.
-     */
-    batchCredentialEndpoint?: number;
-
-    /**
-     * The URL of the credential endpoint of the credential issuer.
-     */
-    credentialEndpoint?: boolean;
-
-    /**
-     * The identifier of a credential request.
-     */
-    credentialIssuer?: string;
-
-    /**
-     * A JSON array describing supported credentials.
-     */
-    credentialsSupported?: boolean;
-
-    /**
-     * The URL of the deferred credential endpoint of the credential issuer.
-     */
-    deferredCredentialEndpoint?: string;
-  }
-
   export interface MtlsEndpointAlias {
     name?: string;
 
@@ -2051,7 +2051,7 @@ export interface ServiceUpdateServiceParams {
    */
   credentialDuration?: number;
 
-  credentialIssuerMetadata?: ServiceUpdateServiceParams.CredentialIssuerMetadata;
+  credentialIssuerMetadata?: CredentialIssuerMetadata;
 
   /**
    * The JWK Set document containing private keys that are used to sign verifiable
@@ -3456,39 +3456,6 @@ export interface ServiceUpdateServiceParams {
 }
 
 export namespace ServiceUpdateServiceParams {
-  export interface CredentialIssuerMetadata {
-    /**
-     * The identifier of the authorization server that the credential issuer relies on
-     * for authorization.
-     */
-    authorizationServer?: string;
-
-    /**
-     * The URL of the batch credential endpoint of the credential issuer.
-     */
-    batchCredentialEndpoint?: number;
-
-    /**
-     * The URL of the credential endpoint of the credential issuer.
-     */
-    credentialEndpoint?: boolean;
-
-    /**
-     * The identifier of a credential request.
-     */
-    credentialIssuer?: string;
-
-    /**
-     * A JSON array describing supported credentials.
-     */
-    credentialsSupported?: boolean;
-
-    /**
-     * The URL of the deferred credential endpoint of the credential issuer.
-     */
-    deferredCredentialEndpoint?: string;
-  }
-
   export interface MtlsEndpointAlias {
     name?: string;
 
@@ -3513,6 +3480,7 @@ Service.Jwks = Jwks;
 
 export declare namespace Service {
   export {
+    type CredentialIssuerMetadata as CredentialIssuerMetadata,
     type ServiceCreateServiceParams as ServiceCreateServiceParams,
     type ServiceUpdateServiceParams as ServiceUpdateServiceParams,
   };

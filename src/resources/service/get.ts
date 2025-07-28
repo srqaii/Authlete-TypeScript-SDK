@@ -4,6 +4,7 @@ import { APIResource } from '../../core/resource';
 import * as IntrospectionAPI from '../auth/introspection';
 import * as AuthenticationAPI from '../backchannel/authentication';
 import * as HskAPI from '../hsk/hsk';
+import * as ServiceAPI from './service';
 import * as AuthorizationAPI from '../auth/authorization/authorization';
 import * as TokenAPI from '../auth/token/token';
 import * as ClientGetAPI from '../client/get';
@@ -366,7 +367,7 @@ export interface Service {
    */
   credentialDuration?: number;
 
-  credentialIssuerMetadata?: Service.CredentialIssuerMetadata;
+  credentialIssuerMetadata?: ServiceAPI.CredentialIssuerMetadata;
 
   /**
    * The JWK Set document containing private keys that are used to sign verifiable
@@ -1792,39 +1793,6 @@ export interface Service {
 }
 
 export namespace Service {
-  export interface CredentialIssuerMetadata {
-    /**
-     * The identifier of the authorization server that the credential issuer relies on
-     * for authorization.
-     */
-    authorizationServer?: string;
-
-    /**
-     * The URL of the batch credential endpoint of the credential issuer.
-     */
-    batchCredentialEndpoint?: number;
-
-    /**
-     * The URL of the credential endpoint of the credential issuer.
-     */
-    credentialEndpoint?: boolean;
-
-    /**
-     * The identifier of a credential request.
-     */
-    credentialIssuer?: string;
-
-    /**
-     * A JSON array describing supported credentials.
-     */
-    credentialsSupported?: boolean;
-
-    /**
-     * The URL of the deferred credential endpoint of the credential issuer.
-     */
-    deferredCredentialEndpoint?: string;
-  }
-
   export interface MtlsEndpointAlias {
     name?: string;
 
