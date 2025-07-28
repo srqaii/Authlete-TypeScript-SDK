@@ -10,4 +10,9 @@ export {
   type GetListServicesParams,
 } from './get';
 export { Jwks, type JwkGetJwksResponse, type JwkGetJwksParams } from './jwks';
-export { Service, type ServiceCreateServiceParams, type ServiceUpdateServiceParams } from './service';
+export {
+  Service,
+  type CredentialIssuerMetadata,
+  type ServiceCreateServiceParams,
+  type ServiceUpdateServiceParams,
+} from './service';

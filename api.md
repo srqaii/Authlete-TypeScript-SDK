@@ -1,5 +1,9 @@
 # Service
 
+Types:
+
+- <code><a href="./src/resources/service/service.ts">CredentialIssuerMetadata</a></code>
+
 Methods:
 
 - <code title="post /api/service/create">client.service.<a href="./src/resources/service/service.ts">createService</a>({ ...params }) -> Service</code>
@@ -33,6 +37,10 @@ Methods:
 - <code title="get /api/{serviceId}/service/jwks/get">client.service.jwks.<a href="./src/resources/service/jwks.ts">getJwks</a>(serviceID, { ...params }) -> JwkGetJwksResponse</code>
 
 # Client
+
+Types:
+
+- <code><a href="./src/resources/client/client.ts">ClientExtension</a></code>
 
 Methods:
 

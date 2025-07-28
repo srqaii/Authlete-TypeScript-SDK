@@ -56,7 +56,12 @@ import {
   HskDeleteResponse,
   HskResource,
 } from './resources/hsk/hsk';
-import { Service, ServiceCreateServiceParams, ServiceUpdateServiceParams } from './resources/service/service';
+import {
+  CredentialIssuerMetadata,
+  Service,
+  ServiceCreateServiceParams,
+  ServiceUpdateServiceParams,
+} from './resources/service/service';
 import {
   Vci,
   VciCreateJwksParams,
@@ -82,6 +87,7 @@ import {
   Client,
   ClientCreateParams,
   ClientDeleteParams,
+  ClientExtension,
   ClientUpdateParams,
 } from './resources/client/client';
 
@@ -836,12 +842,14 @@ export declare namespace Authelete {
 
   export {
     Service as Service,
+    type CredentialIssuerMetadata as CredentialIssuerMetadata,
     type ServiceCreateServiceParams as ServiceCreateServiceParams,
     type ServiceUpdateServiceParams as ServiceUpdateServiceParams,
   };
 
   export {
     Client as Client,
+    type ClientExtension as ClientExtension,
     type ClientCreateParams as ClientCreateParams,
     type ClientUpdateParams as ClientUpdateParams,
     type ClientDeleteParams as ClientDeleteParams,
