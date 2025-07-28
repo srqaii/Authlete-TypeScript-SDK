@@ -3,6 +3,7 @@
 export {
   Get,
   type JwsAlg,
+  type NamedUri,
   type ResponseType,
   type GetGetConfigurationResponse,
   type GetListServicesResponse,

@@ -120,6 +120,12 @@ export type JwsAlg =
   | 'ES256K'
   | 'EdDSA';
 
+export interface NamedUri {
+  name?: string;
+
+  uri?: string;
+}
+
 export type ResponseType =
   | 'NONE'
   | 'CODE'
@@ -901,7 +907,7 @@ export interface Service {
    * }
    * ```
    */
-  mtlsEndpointAliases?: Array<Service.MtlsEndpointAlias>;
+  mtlsEndpointAliases?: Array<NamedUri>;
 
   /**
    * The flag to indicate whether this service validates certificate chains during
@@ -1793,12 +1799,6 @@ export interface Service {
 }
 
 export namespace Service {
-  export interface MtlsEndpointAlias {
-    name?: string;
-
-    uri?: string;
-  }
-
   export interface TrustAnchor {
     /**
      * the entity ID of the trust anchor
@@ -1879,6 +1879,7 @@ export interface GetListServicesParams {
 export declare namespace Get {
   export {
     type JwsAlg as JwsAlg,
+    type NamedUri as NamedUri,
     type ResponseType as ResponseType,
     type Service as Service,
     type GetGetConfigurationResponse as GetGetConfigurationResponse,
