@@ -12,6 +12,7 @@ import {
   GetListServicesParams,
   GetListServicesResponse,
   JwsAlg,
+  NamedUri,
   ResponseType,
   Service as GetAPIService,
 } from './get';
@@ -930,7 +931,7 @@ export interface ServiceCreateServiceParams {
    * }
    * ```
    */
-  mtlsEndpointAliases?: Array<ServiceCreateServiceParams.MtlsEndpointAlias>;
+  mtlsEndpointAliases?: Array<GetAPI.NamedUri>;
 
   /**
    * The flag to indicate whether this service validates certificate chains during
@@ -1807,12 +1808,6 @@ export interface ServiceCreateServiceParams {
 }
 
 export namespace ServiceCreateServiceParams {
-  export interface MtlsEndpointAlias {
-    name?: string;
-
-    uri?: string;
-  }
-
   export interface TrustAnchor {
     /**
      * the entity ID of the trust anchor
@@ -2579,7 +2574,7 @@ export interface ServiceUpdateServiceParams {
    * }
    * ```
    */
-  mtlsEndpointAliases?: Array<ServiceUpdateServiceParams.MtlsEndpointAlias>;
+  mtlsEndpointAliases?: Array<GetAPI.NamedUri>;
 
   /**
    * The flag to indicate whether this service validates certificate chains during
@@ -3456,12 +3451,6 @@ export interface ServiceUpdateServiceParams {
 }
 
 export namespace ServiceUpdateServiceParams {
-  export interface MtlsEndpointAlias {
-    name?: string;
-
-    uri?: string;
-  }
-
   export interface TrustAnchor {
     /**
      * the entity ID of the trust anchor
@@ -3488,6 +3477,7 @@ export declare namespace Service {
   export {
     Get as Get,
     type JwsAlg as JwsAlg,
+    type NamedUri as NamedUri,
     type ResponseType as ResponseType,
     type GetAPIService as Service,
     type GetGetConfigurationResponse as GetGetConfigurationResponse,

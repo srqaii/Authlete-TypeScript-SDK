@@ -15,6 +15,7 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/service/get.ts">JwsAlg</a></code>
+- <code><a href="./src/resources/service/get.ts">NamedUri</a></code>
 - <code><a href="./src/resources/service/get.ts">ResponseType</a></code>
 - <code><a href="./src/resources/service/get.ts">Service</a></code>
 - <code><a href="./src/resources/service/get.ts">GetGetConfigurationResponse</a></code>
