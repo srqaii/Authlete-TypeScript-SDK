@@ -1,0 +1,85 @@
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+import Authelete from 'authelete';
+
+const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+
+describe('resource device', () => {
+  // skipped: tests are disabled for the time being
+  test.skip('authorize: only required params', async () => {
+    const responsePromise = client.device.authorize('serviceId', {
+      parameters: 'client_id=26888344961664&scope=history.read',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('authorize: required and optional params', async () => {
+    const response = await client.device.authorize('serviceId', {
+      parameters: 'client_id=26888344961664&scope=history.read',
+      clientCertificate: 'clientCertificate',
+      clientCertificatePath: 'clientCertificatePath',
+      clientId: '26888344961664',
+      clientSecret: 'SfnYOLkJdofrb_66mTd6q03_SDoDEUnpXtvqFaE4k6L6UcpZzbdVJi2GpBj48AvGeDDllwsTruC62WYqQ_LGog',
+    });
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('completeAuthorization: only required params', async () => {
+    const responsePromise = client.device.completeAuthorization('serviceId', {
+      result: 'AUTHORIZED',
+      subject: 'john',
+      userCode: 'XWWKPBWVXQ',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('completeAuthorization: required and optional params', async () => {
+    const response = await client.device.completeAuthorization('serviceId', {
+      result: 'AUTHORIZED',
+      subject: 'john',
+      userCode: 'XWWKPBWVXQ',
+      acr: 'acr',
+      authTime: 0,
+      claims: 'claims',
+      consentedClaims: ['string'],
+      errorDescription: 'errorDescription',
+      errorUri: 'errorUri',
+      idtHeaderParams: 'idtHeaderParams',
+      jwtAtClaims: 'jwtAtClaims',
+      properties: [{ hidden: true, key: 'key', value: 'value' }],
+      scopes: ['string'],
+      sub: 'sub',
+    });
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('verify: only required params', async () => {
+    const responsePromise = client.device.verify('serviceId', { userCode: 'XWWKPBWVXQ' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('verify: required and optional params', async () => {
+    const response = await client.device.verify('serviceId', { userCode: 'XWWKPBWVXQ' });
+  });
+});
