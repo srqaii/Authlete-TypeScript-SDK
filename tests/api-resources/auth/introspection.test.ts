@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource introspection', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('process: only required params', async () => {
     const responsePromise = client.auth.introspection.process('serviceId', {
       token: 'VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI',
@@ -19,7 +19,7 @@ describe('resource introspection', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('process: required and optional params', async () => {
     const response = await client.auth.introspection.process('serviceId', {
       token: 'VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI',
@@ -39,7 +39,7 @@ describe('resource introspection', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('standard: only required params', async () => {
     const responsePromise = client.auth.introspection.standard('serviceId', {
       parameters: 'token=VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI&token_type_hint=access_token',
@@ -53,7 +53,7 @@ describe('resource introspection', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('standard: required and optional params', async () => {
     const response = await client.auth.introspection.standard('serviceId', {
       parameters: 'token=VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI&token_type_hint=access_token',

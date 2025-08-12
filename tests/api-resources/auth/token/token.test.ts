@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource token', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.auth.token.create('serviceId', {
       clientId: 26888344961664,
@@ -20,7 +20,7 @@ describe('resource token', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.auth.token.create('serviceId', {
       clientId: 26888344961664,
@@ -58,7 +58,7 @@ describe('resource token', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.auth.token.update('serviceId', {
       accessToken: 'Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q',
@@ -72,7 +72,7 @@ describe('resource token', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.auth.token.update('serviceId', {
       accessToken: 'Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q',
@@ -102,7 +102,7 @@ describe('resource token', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.auth.token.delete('accessTokenIdentifier', { serviceId: 'serviceId' });
     const rawResponse = await responsePromise.asResponse();
@@ -114,12 +114,12 @@ describe('resource token', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.auth.token.delete('accessTokenIdentifier', { serviceId: 'serviceId' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('fail: only required params', async () => {
     const responsePromise = client.auth.token.fail('serviceId', {
       reason: 'INVALID_RESOURCE_OWNER_CREDENTIALS',
@@ -134,7 +134,7 @@ describe('resource token', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('fail: required and optional params', async () => {
     const response = await client.auth.token.fail('serviceId', {
       reason: 'INVALID_RESOURCE_OWNER_CREDENTIALS',
@@ -142,7 +142,7 @@ describe('resource token', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('issue: only required params', async () => {
     const responsePromise = client.auth.token.issue('serviceId', {
       subject: 'john',
@@ -157,7 +157,7 @@ describe('resource token', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('issue: required and optional params', async () => {
     const response = await client.auth.token.issue('serviceId', {
       subject: 'john',
@@ -168,7 +168,7 @@ describe('resource token', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('process: only required params', async () => {
     const responsePromise = client.auth.token.process('serviceId', {
       parameters:
@@ -183,7 +183,7 @@ describe('resource token', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('process: required and optional params', async () => {
     const response = await client.auth.token.process('serviceId', {
       parameters:
@@ -201,7 +201,7 @@ describe('resource token', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('revoke', async () => {
     const responsePromise = client.auth.token.revoke('serviceId', {});
     const rawResponse = await responsePromise.asResponse();
