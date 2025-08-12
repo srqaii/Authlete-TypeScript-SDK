@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource get', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getConfiguration', async () => {
     const responsePromise = client.service.get.getConfiguration('serviceId');
     const rawResponse = await responsePromise.asResponse();
@@ -17,7 +17,7 @@ describe('resource get', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getConfiguration: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -29,7 +29,7 @@ describe('resource get', () => {
     ).rejects.toThrow(Authelete.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('listServices', async () => {
     const responsePromise = client.service.get.listServices();
     const rawResponse = await responsePromise.asResponse();
@@ -41,7 +41,7 @@ describe('resource get', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('listServices: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -49,7 +49,7 @@ describe('resource get', () => {
     ).rejects.toThrow(Authelete.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveService', async () => {
     const responsePromise = client.service.get.retrieveService('serviceId');
     const rawResponse = await responsePromise.asResponse();

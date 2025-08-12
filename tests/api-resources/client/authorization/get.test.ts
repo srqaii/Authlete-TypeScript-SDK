@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource get', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.client.authorization.get.list('serviceId', { subject: 'subject' });
     const rawResponse = await responsePromise.asResponse();
@@ -17,7 +17,7 @@ describe('resource get', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.client.authorization.get.list('serviceId', {
       subject: 'subject',

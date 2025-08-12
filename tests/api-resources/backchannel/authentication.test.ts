@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource authentication', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('completeProcess: only required params', async () => {
     const responsePromise = client.backchannel.authentication.completeProcess('serviceId', {
       result: 'AUTHORIZED',
@@ -21,7 +21,7 @@ describe('resource authentication', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('completeProcess: required and optional params', async () => {
     const response = await client.backchannel.authentication.completeProcess('serviceId', {
       result: 'AUTHORIZED',
@@ -42,7 +42,7 @@ describe('resource authentication', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('failRequest: only required params', async () => {
     const responsePromise = client.backchannel.authentication.failRequest('serviceId', {
       reason: 'ACCESS_DENIED',
@@ -57,7 +57,7 @@ describe('resource authentication', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('failRequest: required and optional params', async () => {
     const response = await client.backchannel.authentication.failRequest('serviceId', {
       reason: 'ACCESS_DENIED',
@@ -67,7 +67,7 @@ describe('resource authentication', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('issueResponse: only required params', async () => {
     const responsePromise = client.backchannel.authentication.issueResponse('serviceId', {
       ticket: 'NFIHGx_btVrWmtAD093D-87JxvT4DAtuijEkLVHbS4Q',
@@ -81,14 +81,14 @@ describe('resource authentication', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('issueResponse: required and optional params', async () => {
     const response = await client.backchannel.authentication.issueResponse('serviceId', {
       ticket: 'NFIHGx_btVrWmtAD093D-87JxvT4DAtuijEkLVHbS4Q',
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('process: only required params', async () => {
     const responsePromise = client.backchannel.authentication.process('serviceId', {
       parameters:
@@ -103,7 +103,7 @@ describe('resource authentication', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('process: required and optional params', async () => {
     const response = await client.backchannel.authentication.process('serviceId', {
       parameters:

@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource device', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('authorize: only required params', async () => {
     const responsePromise = client.device.authorize('serviceId', {
       parameters: 'client_id=26888344961664&scope=history.read',
@@ -19,7 +19,7 @@ describe('resource device', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('authorize: required and optional params', async () => {
     const response = await client.device.authorize('serviceId', {
       parameters: 'client_id=26888344961664&scope=history.read',
@@ -30,7 +30,7 @@ describe('resource device', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('completeAuthorization: only required params', async () => {
     const responsePromise = client.device.completeAuthorization('serviceId', {
       result: 'AUTHORIZED',
@@ -46,7 +46,7 @@ describe('resource device', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('completeAuthorization: required and optional params', async () => {
     const response = await client.device.completeAuthorization('serviceId', {
       result: 'AUTHORIZED',
@@ -66,7 +66,7 @@ describe('resource device', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('verify: only required params', async () => {
     const responsePromise = client.device.verify('serviceId', { userCode: 'XWWKPBWVXQ' });
     const rawResponse = await responsePromise.asResponse();
@@ -78,7 +78,7 @@ describe('resource device', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('verify: required and optional params', async () => {
     const response = await client.device.verify('serviceId', { userCode: 'XWWKPBWVXQ' });
   });

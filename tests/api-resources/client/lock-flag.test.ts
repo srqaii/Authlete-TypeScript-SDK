@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource lockFlag', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.client.lockFlag.update('clientIdentifier', {
       serviceId: 'serviceId',
@@ -20,7 +20,7 @@ describe('resource lockFlag', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.client.lockFlag.update('clientIdentifier', {
       serviceId: 'serviceId',

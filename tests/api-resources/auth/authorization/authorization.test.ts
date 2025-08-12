@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource authorization', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('fail: only required params', async () => {
     const responsePromise = client.auth.authorization.fail('serviceId', {
       reason: 'NOT_AUTHENTICATED',
@@ -20,7 +20,7 @@ describe('resource authorization', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('fail: required and optional params', async () => {
     const response = await client.auth.authorization.fail('serviceId', {
       reason: 'NOT_AUTHENTICATED',
@@ -29,7 +29,7 @@ describe('resource authorization', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('issue: only required params', async () => {
     const responsePromise = client.auth.authorization.issue('serviceId', {
       subject: 'john',
@@ -44,7 +44,7 @@ describe('resource authorization', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('issue: required and optional params', async () => {
     const response = await client.auth.authorization.issue('serviceId', {
       subject: 'john',
@@ -76,7 +76,7 @@ describe('resource authorization', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('process: only required params', async () => {
     const responsePromise = client.auth.authorization.process('serviceId', {
       parameters:
@@ -91,7 +91,7 @@ describe('resource authorization', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('process: required and optional params', async () => {
     const response = await client.auth.authorization.process('serviceId', {
       parameters:

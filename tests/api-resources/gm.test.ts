@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource gm', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('processGrantManagementRequest', async () => {
     const responsePromise = client.gm.processGrantManagementRequest('serviceId', {});
     const rawResponse = await responsePromise.asResponse();

@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource batch', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('issue', async () => {
     const responsePromise = client.vci.batch.issue('serviceId', {});
     const rawResponse = await responsePromise.asResponse();
@@ -17,7 +17,7 @@ describe('resource batch', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('parse', async () => {
     const responsePromise = client.vci.batch.parse('serviceId', {});
     const rawResponse = await responsePromise.asResponse();

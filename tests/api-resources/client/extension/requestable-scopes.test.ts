@@ -5,7 +5,7 @@ import Authelete from 'authelete';
 const client = new Authelete({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource requestableScopes', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.client.extension.requestableScopes.update('clientId', {
       serviceId: 'serviceId',
@@ -19,7 +19,7 @@ describe('resource requestableScopes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.client.extension.requestableScopes.update('clientId', {
       serviceId: 'serviceId',
@@ -27,7 +27,7 @@ describe('resource requestableScopes', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.client.extension.requestableScopes.delete('clientId', {
       serviceId: 'serviceId',
@@ -41,14 +41,14 @@ describe('resource requestableScopes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.client.extension.requestableScopes.delete('clientId', {
       serviceId: 'serviceId',
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('get: only required params', async () => {
     const responsePromise = client.client.extension.requestableScopes.get('clientId', {
       serviceId: 'serviceId',
@@ -62,7 +62,7 @@ describe('resource requestableScopes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('get: required and optional params', async () => {
     const response = await client.client.extension.requestableScopes.get('clientId', {
       serviceId: 'serviceId',
